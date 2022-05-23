@@ -11,14 +11,13 @@ router.post('/addAddress', addAddress);
 router.put('/changeDefaultAddress/:id', changeDefaultAddress);
 router.get('/getUserAddresses', getUserAddresses);
 router.delete('/deleteAddress/:id', deleteAddress);
-router.get('/', getAll);
-router.get('/:id', getById);
 router.post('/resendVerify', resendVerify);
 router.post('/verifyEmail', verifyEmail);
 router.post('/forgotPasswordRequest', forgotPasswordRequest);
-router.post('/forgotPasswordTokenOnly', forgotPasswordTokenOnly);
 router.put('/forgotPasswordUpdate', forgotPasswordUpdate);
 router.put('/editName', editName);
+router.get('/', getAll);
+router.get('/:id', getById);
 
 
 
@@ -103,12 +102,6 @@ function verifyEmail(req, res, next) {
 function forgotPasswordRequest(req, res, next) {
     userService.forgotPasswordRequest(req.body)
         .then(() => res.json({ message: 'Email sent.' }))
-        .catch(next);
-}
-
-function forgotPasswordTokenOnly(req, res, next) {
-    userService.forgotPasswordTokenOnly(req.body)
-        .then(() => res.json({ message: 'Token ok' }))
         .catch(next);
 }
 

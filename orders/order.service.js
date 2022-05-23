@@ -15,10 +15,10 @@ module.exports = {
     openOrder,
     listOfOrders,
     getByStatus,
-    getAll,
-    getById,
     changeStatus,
-    cancelOrder
+    cancelOrder,
+    getAll,
+    getById
 };
 
 async function create (token, userParam) {
@@ -307,18 +307,6 @@ async function getByStatus(token, statusId) {
 
 }
 
-async function getAll() {
-
-    return await Order.find();
-
-}
-
-async function getById(id) {
-
-    return await Order.findById(ObjectId(id));
-
-}
-
 async function changeStatus(userParam) {
     const order = await Order.findOne({_id : ObjectId(userParam.id)});
     const code = userParam.statusCode;
@@ -341,10 +329,20 @@ async function changeStatus(userParam) {
     }
 }
 
-async function cancelOrder(userParam) {
-    await Order.deleteOne({_id : ObjectId(userParam.id)});
+async function cancelOrder(id) {
+    await Order.deleteOne(id);
 
     return;
 }
 
+async function getAll() {
 
+    return await Order.find();
+
+}
+
+async function getById(id) {
+
+    return await Order.findById(ObjectId(id));
+
+}

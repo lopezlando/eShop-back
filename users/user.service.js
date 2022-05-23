@@ -1,4 +1,5 @@
-﻿const secret = process.env.SECRET_KEY,
+﻿const 
+    secret = process.env.SECRET_KEY,
     jwt = require('jsonwebtoken'),
     bcrypt = require('bcryptjs'),
     crypto = require("crypto"),
@@ -15,14 +16,13 @@ module.exports = {
     changeDefaultAddress,
     getUserAddresses,
     deleteAddress,
-    getAll,
-    getById,
     resendVerify,
     verifyEmail,
     forgotPasswordRequest,
-    forgotPasswordTokenOnly,
     forgotPasswordUpdate,
-    editName
+    editName,
+    getAll,
+    getById
 };
 
 //REGISTER
@@ -188,16 +188,6 @@ async function deleteAddress(token, id) {
 
 }
 
-//GET ALL / GET BY ID
-
-async function getAll() {
-    return await User.find();
-}
-
-async function getById(id) {
-    return await User.findById(ObjectId(id));
-}
-
 //GENERATE TOKENS (not authentication tokens, verify email and forgot pw tokens)
 function randomTokenString() {
     return crypto.randomBytes(2).toString('hex');
@@ -263,13 +253,6 @@ async function forgotPasswordRequest({ email }) {
     await user.save();
 }
 
-async function forgotPasswordTokenOnly(userParam) {
-    const user = await db.User.findOne({ forgotPwToken: userParam.token });
-    if (!user) throw 'User not found/invalid reset pw token.';
-    
-    return;
-}
-
 async function forgotPasswordUpdate(userParam) {
     const user = await db.User.findOne({ forgotPwToken: userParam.token });
 
@@ -287,6 +270,8 @@ async function forgotPasswordUpdate(userParam) {
     return {user : user};
 }
 
+//EDIT NAME
+
 async function editName(token, userParam) {
 
     let userId = await getUserId(token);
@@ -301,4 +286,14 @@ async function editName(token, userParam) {
     await user.save();
 
     return user;
+}
+
+//GET ALL / GET BY ID
+
+async function getAll() {
+    return await User.find();
+}
+
+async function getById(id) {
+    return await User.findById(ObjectId(id));
 }

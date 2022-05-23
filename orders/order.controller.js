@@ -10,7 +10,7 @@ router.get('/listOfOrders', listOfOrders);
 router.get('/getByStatus/:statusId', getByStatus);
 router.get('/', getAll);
 router.put('/changeStatus', changeStatus);
-router.delete('/cancelOrder', cancelOrder);
+router.delete('/cancelOrder/:id', cancelOrder);
 router.get('/:id', getById);
 
 module.exports = router;
@@ -60,7 +60,7 @@ function changeStatus(req, res, next) {
 }
 
 function cancelOrder(req, res, next) {
-    orderService.cancelOrder(req.body)
+    orderService.cancelOrder(req.params.id)
         .then(() => res.json({ message: 'Order cancelled.' }))
         .catch(next);
 }

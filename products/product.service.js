@@ -9,14 +9,14 @@ const
 module.exports = {
     create,
     updateStock,
-    getAll,
-    getById,
     partialMatch,
     getBySubcategory,
     getByProvider,
     getByProvSubcat,
     getByCategory,
-    recommended
+    recommended,
+    getAll,
+    getById
 };
 
 async function create(userParam) {
@@ -77,14 +77,6 @@ async function updateStock (userParam) {
     await product.save();
     return product;
 
-}
-
-async function getAll() {
-    return await Product.find();
-}
-
-async function getById(id) {
-    return await Product.findById(ObjectId(id));
 }
 
 async function partialMatch(query) {
@@ -157,3 +149,10 @@ async function recommended(req){
                
 }
 
+async function getAll() {
+    return await Product.find();
+}
+
+async function getById(id) {
+    return await Product.findById(ObjectId(id));
+}

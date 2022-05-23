@@ -4,26 +4,20 @@ const
     productService = require('./product.service');
 
 //routes
-router.get('/partialMatch', partialMatch);
 router.post('/create', create);
 router.put('/updateStock', updateStock);
-router.get('/', getAll);
-router.get('/:id', getById);
+router.get('/partialMatch', partialMatch);
 router.get('/getBySubcategory/:subcat', getBySubcategory);
 router.get('/getByProvider/:provId', getByProvider);
 router.get('/getByProvSubcat/:provId/:subcat', getByProvSubcat);
 router.get('/getByCategory/:cat', getByCategory);
 router.get('/recommended', recommended);
+router.get('/', getAll);
+router.get('/:id', getById);
 
 module.exports = router;
 
 //functions
-
-function partialMatch(req, res, next) {
-    productService.partialMatch(req.query)
-        .then(product => product ? res.json(product) : res.sendStatus(404))
-        .catch(err => next(err));
-}
 
 function create(req, res, next) {
     productService.create(req.body)
@@ -37,14 +31,8 @@ function updateStock(req, res, next) {
         .catch(err => next(err));
 }
 
-function getAll(req, res, next) {
-    productService.getAll()
-        .then(product => res.json(product))
-        .catch(err => next(err));
-}
-
-function getById(req, res, next) {
-    productService.getById(req.params.id)
+function partialMatch(req, res, next) {
+    productService.partialMatch(req.query)
         .then(product => product ? res.json(product) : res.sendStatus(404))
         .catch(err => next(err));
 }
@@ -76,5 +64,17 @@ function getByCategory(req, res, next) {
 function recommended(req, res, next) {
     productService.recommended(req.headers.authorization.split(' ')[1])
         .then(product => product ? res.json(product) : res.status(404).json({ message: 'There was an issue loading the recommended products.' }))
+        .catch(err => next(err));
+}
+
+function getAll(req, res, next) {
+    productService.getAll()
+        .then(product => res.json(product))
+        .catch(err => next(err));
+}
+
+function getById(req, res, next) {
+    productService.getById(req.params.id)
+        .then(product => product ? res.json(product) : res.sendStatus(404))
         .catch(err => next(err));
 }
