@@ -1,6 +1,6 @@
 const 
     mongoose = require('mongoose'),
-    connectionString = process.env.CONNECTION_STRING,
+    connectionString = process.env.MONGODB_URI,
     connectionOptions = { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false };
 mongoose.connect(connectionString || 'mongodb://localhost/eShop', connectionOptions);
 mongoose.Promise = global.Promise;
