@@ -120,8 +120,8 @@ async function getByCategory(cat) {
     return await Product.find({ category : cat });
 }
 
-async function recommended(req){
-    const user = await userService.retrieveUser(req);
+async function recommended(token){
+    const user = await userService.getUserId(token);
     const favs = user.favorites;
     let favItems = [];
     let listOfFavs = [];

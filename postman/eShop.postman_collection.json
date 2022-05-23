@@ -1,0 +1,1552 @@
+{
+	"info": {
+		"_postman_id": "5db2b173-92e3-4c4b-a57c-e78acaf60c73",
+		"name": "eShop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17013718"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"demo\",\r\n    \"lastName\": \"one\",\r\n    \"password\": \"demo2022\",\r\n    \"email\": \"demo@eShop.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eShopHeroku}}/api/users/register",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\" : \"6c1e\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eShopHeroku}}/api/users/verifyEmail",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"verifyEmail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resend verify",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"emailParam\": \"demo@eShop.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eShopHeroku}}/api/users/resendVerify",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"resendVerify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authenticate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"demo@eShop.com\",\r\n    \"password\": \"Demo1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eShopHeroku}}/api/users/authenticate",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"street\": \"street 3\",\r\n    \"streetNumber\": 789,\r\n    \"floor\": 6,\r\n    \"door\": \"B\",\r\n    \"CP\": 4999\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eShopHeroku}}/api/users/addAddress",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"addAddress"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change default address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/users/changeDefaultAddress/628bbf952f95fb0016ed16a2",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"changeDefaultAddress",
+								"628bbf952f95fb0016ed16a2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user addresses",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/users/getUserAddresses",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"getUserAddresses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/users/deleteAddress/628bbf852f95fb0016ed16a1",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"deleteAddress",
+								"628bbf852f95fb0016ed16a1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgot password request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"demo2@eShop.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eShopHeroku}}/api/users/forgotPasswordRequest",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"forgotPasswordRequest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgotPasswordUpdate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"54e0\",\r\n    \"pw\": \"123456\",\r\n    \"confirmPw\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eShopHeroku}}/api/users/forgotPasswordUpdate",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"forgotPasswordUpdate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/users/getuserId",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"getuserId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit name",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\" : \"demo2\",\r\n    \"lastName\": \"eShop-back\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eShopHeroku}}/api/users/editName",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"editName"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/users/",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/users/628bbe452f95fb0016ed16a0",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"628bbe452f95fb0016ed16a0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category\": \"higiene\",\r\n    \"img\": \"higiene.jpg\",\r\n    \"subcategories\": [\r\n        {\r\n            \"subcategory\": \"skin care\",\r\n            \"img\": \"skincare.jpg\"\r\n        },\r\n        {\r\n            \"subcategory\": \"hair products\",\r\n            \"img\": \"hairproducts.jpg\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eShopHeroku}}/api/categories/create",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all subcategories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/categories/getSubcat",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"getSubcat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/categories/",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/categories/",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Providers",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Grocery Store 2\",\r\n    \"img\": \"store2.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eShopHeroku}}/api/providers/create",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"providers",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/providers/",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"providers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/providers/",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"providers",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"shampoo 2\",\r\n    \"description\": \"pantene\",\r\n    \"price\":12,\r\n    \"img\": \"https://farmacityar.vteximg.com.br/arquivos/ids/205205-1000-1000/153323_shampoo-max-pro-v-control-caida-x-200-ml_imagen-1.jpg?v=637411427035330000\",\r\n    \"stock\": 15,\r\n    \"subcatId\": \"628bd405f2194a00168f5309\",\r\n    \"providerId\": \"628bd438f2194a00168f530b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eShopHeroku}}/api/products/create",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update stock",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"628bd607f2194a00168f5313\",\r\n    \"newStock\" : 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eShopHeroku}}/api/products/updateStock",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"updateStock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "partial match",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/products/partialMatch?name=green tea&category=market&subcategory=infusions&provider=628bd433f2194a00168f530a",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"partialMatch"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "green tea"
+								},
+								{
+									"key": "category",
+									"value": "market"
+								},
+								{
+									"key": "subcategory",
+									"value": "infusions"
+								},
+								{
+									"key": "provider",
+									"value": "628bd433f2194a00168f530a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by subcategory",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/products/getBySubcategory/infusions",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"getBySubcategory",
+								"infusions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by provider",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/products/getByProvider/628bd433f2194a00168f530a",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"getByProvider",
+								"628bd433f2194a00168f530a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by subcategory and provider",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/products/getByProvSubcat/628bd433f2194a00168f530a/infusions",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"getByProvSubcat",
+								"628bd433f2194a00168f530a",
+								"infusions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recommended",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/products/recommended",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"recommended"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/products/",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/products/",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "add to cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\" : \"628bd573f2194a00168f5310\",\r\n    \"quantity\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eShopHeroku}}/api/cart/addToCart",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								"addToCart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/cart/deleteItem/62827e11cf23ce31dc783e92",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								"deleteItem",
+								"62827e11cf23ce31dc783e92"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/cart/deleteCart",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								"deleteCart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "open cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/cart/openCart",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								"openCart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cart length",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/cart/cartLength",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								"cartLength"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "product length",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/cart/productLength/628bd4cbf2194a00168f530c",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								"productLength",
+								"628bd4cbf2194a00168f530c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/cart/",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/cart/6230ea0d8785dc28400444d0",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								"6230ea0d8785dc28400444d0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"street\": \"street1\",\r\n    \"streetNumber\": 123,\r\n    \"floor\": 4,\r\n    \"door\": \"D\",\r\n    \"CP\": 5001\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eShopHeroku}}/api/orders/create",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list of orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/orders/listOfOrders",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"listOfOrders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "open order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/orders/openOrder/628bd740f2194a00168f5318",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"openOrder",
+								"628bd740f2194a00168f5318"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/orders/getByStatus/1",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"getByStatus",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"statusCode\": \"2\",\r\n    \"id\": \"628bd740f2194a00168f5318\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eShopHeroku}}/api/orders/changeStatus",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"changeStatus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/orders/cancelOrder/",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"cancelOrder",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/orders/",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/orders/",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bags",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eShopHeroku}}/api/bags/",
+							"host": [
+								"{{eShopHeroku}}"
+							],
+							"path": [
+								"api",
+								"bags",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
