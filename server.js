@@ -30,7 +30,7 @@ app.use(errorHandler);
 
 // start server
 const 
-    port = process.env.CONNECTION_PORT || 3000,
+    port = process.env.PORT || 3000,
     server = app.listen(port, function () {
         console.log('Server running on port ' + port);
     });
