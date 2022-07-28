@@ -1,40 +1,23 @@
-const 
-  nodemailer = require('nodemailer'),
-  { google } = require('googleapis'),
-  CLIENT_ID=process.env.CLIENT_ID,
-  CLIENT_SECRET=process.env.CLIENT_SECRET,
-  REDIRECT_URI=process.env.REDIRECT_URI,
-  REFRESH_TOKEN=process.env.REFRESH_TOKEN,
-  oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
+const nodemailer = require('nodemailer');
+const mg = require('nodemailer-mailgun-transport');
 
-oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
-
-module.exports = {
-  send
+const auth = {
+  auth: {
+    api_key: process.env.API_KEY,
+    domain: process.env.MAILGUN_DOMAIN,
+  },
 };
 
-async function send(mailOptions) {
+const nodemailerMailgun = nodemailer.createTransport(mg(auth));
 
-  try {
+module.exports = { send };
 
-    const 
-      accessToken = await oAuth2Client.getAccessToken(),
-      transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          type: 'oAuth2',
-          user: process.env.MAIL_USER,
-          clientId: CLIENT_ID,
-          clientSecret : CLIENT_SECRET,
-          refreshToken : REFRESH_TOKEN,
-          accessToken: accessToken
-        }
-      }),
-      result = await transporter.sendMail(mailOptions);
-
-    return result;
-
-  } catch (error) {
-    return error;
-  }
+function send(mailOptions) {
+  nodemailerMailgun.sendMail(mailOptions, (err, info) => {
+    if (err) {
+      console.log(`Error: ${err}`);
+    } else {
+      console.log(`Response: ${info}`);
+    }
+  });
 }

@@ -26,6 +26,7 @@
         "mongodb": "^3.5.9",
         "mongoose": "^5.9.21",
         "nodemailer": "^6.7.5",
+        "nodemailer-mailgun-transport": "^2.1.4",
         "rootpath": "^0.1.2"
     }
 }
