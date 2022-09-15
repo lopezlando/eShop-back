@@ -7,6 +7,9 @@ module.exports = {
     getAll
 };
 
+// The bag creation function is automatically triggered as many times
+// as necessary when an order is created.
+
 async function create (orderId, providerId, productId, quantity, name, img) {
     
     let bag = await Bag.findOne({ orderId, providerId });

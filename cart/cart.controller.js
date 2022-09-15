@@ -22,17 +22,23 @@ function create(req, res, next) {
         .catch(err => next(err));
 }
 
+//addToCart adds a new product to the cart or updates the quantity if already present.
+
 function addToCart(req, res, next) {
     cartService.addToCart(req.headers.authorization.split(' ')[1], req.body)
         .then(cart => cart ? res.json(cart) : res.status(404).json({ message: 'We could not retrieve the cart.' }))
         .catch(err => next(err));
 }
 
+//delete a single item
+
 function deleteItem(req, res, next) {
     cartService.deleteItem(req.headers.authorization.split(' ')[1], req.params.id)
         .then(cart => cart ? res.json(cart) : res.status(404).json({ message: 'There was an issue while deleting the cart' }))
         .catch(err => next(err));
 }
+
+//delete the whole cart
 
 function deleteCart(req, res, next) {
     cartService.deleteCart(req.headers.authorization.split(' ')[1])
@@ -42,15 +48,19 @@ function deleteCart(req, res, next) {
 
 function openCart(req, res, next) {
     cartService.openCart(req.headers.authorization.split(' ')[1])
-        .then(cart => cart ? res.json(cart) : res.status(404).json({ message: 'The cart could not be visualized.' }))
+        .then(cart => cart ? res.json(cart) : res.status(404).json({ message: 'The cart is empty.' }))
         .catch(err => next(err));
 }
+
+//displays the amount of products per cart
 
 function cartLength(req, res, next) {
     cartService.cartLength(req.headers.authorization.split(' ')[1])
         .then(cart => cart ? res.json(cart) : res.status(404).json({ message: 'The cart could not be retrieved.' }))
         .catch(err => next(err));
 }
+
+//displays the quantity of a single product in the cart
 
 function productLength(req, res, next) {
     cartService.productLength(req.headers.authorization.split(' ')[1], req.params.productId)

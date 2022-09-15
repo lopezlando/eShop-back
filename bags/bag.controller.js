@@ -9,6 +9,8 @@ router.get('/', getAll);
 
 module.exports = router;
 
+//endpoints
+
 function create(req, res, next) {
     bagService.create(req.body)
         .then(bag => bag ? res.json(bag) : res.status(404).json({ message: 'We could not create the order.' }))
